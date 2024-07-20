@@ -7,6 +7,24 @@
 
 const canPlaceFlowers = (flowerbed, n) => {
 
+    for (let i = 0; i < flowerbed.length; i++) {
+        const lastElement = flowerbed.length - 1;
+        if (i === 0 && flowerbed[i] === 0 && flowerbed[i + 1] === 0) {
+            flowerbed[i] = 1;
+            n--;
+        } else if (flowerbed[i] === 0 && flowerbed[i - 1] === 0 && flowerbed[i + 1] === 0) {
+            flowerbed[i] = 1;
+            n--;
+        } else if (i === lastElement && flowerbed[i] === 0 && (i === 0 || flowerbed[i - 1] === 0)) {
+            flowerbed[i] = 1;
+            n--;
+        }
+    }
 
+    return n <= 0;
 }
-console.log(canPlaceFlowers([1, 0, 0, 0, 1],)); // Expected Ouput = true;
+console.log(canPlaceFlowers([1, 0, 0, 0, 1], 1)); // Expected Output = true;
+console.log(canPlaceFlowers([1, 0, 0, 0, 0, 0, 1], 2)); // Expected Output = true;
+console.log(canPlaceFlowers([1, 0, 0, 0, 1, 0, 0], 2)); // Expected Output = true;
+console.log(canPlaceFlowers([0], 1)); // Expected Output = true;
+console.log(canPlaceFlowers([1], 1)); // Expected Output = false;
