@@ -23,8 +23,10 @@ const reversedWords = (s) => {
     let result = "";
     for (let i = words.length - 1; i >= 0; i--) {
 
-
-        if (i !== 0 || words[i] !== " ") {
+        if (words[i] === "") {
+            continue;
+        }
+        if (i !== 0 || words[i] !== "") {
             result += `${words[i]} `;
         } else {
             result += `${words[i]}`
