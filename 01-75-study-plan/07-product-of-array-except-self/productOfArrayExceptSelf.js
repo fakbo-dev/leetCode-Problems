@@ -26,7 +26,6 @@ function productExceptLeft(nums) {
     // Calculate the product of all elements to the left 
     //of each element
     for (let i = 1; i < n; i++) {
-        console.log(left[i]);
         left[i] = left[i - 1] * nums[i - 1];
     }
 
@@ -38,6 +37,7 @@ function productExceptLeft(nums) {
 
     for (let i = 0; i < n; i++) {
         answer[i] = left[i] * right[i];
+        console.log(answer[i]);
     }
 
     return answer;
