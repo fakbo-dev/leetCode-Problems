@@ -27,9 +27,7 @@ const isSubsequence = (s, t) => {
     while (p1 < n) {
 
         if (p1 < n && rightString[p1] === leftString[p2]) {
-
             newArr.push(rightString[p1]);
-
             p2++
         }
 
@@ -38,7 +36,6 @@ const isSubsequence = (s, t) => {
     }
     const result = newArr.join("");
     return result === s;
-
 }
 
 console.log(isSubsequence("abc", "ahbgdc")); // Ouput:  True
