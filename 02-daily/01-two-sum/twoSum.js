@@ -14,7 +14,6 @@ const twoSum = function (nums, target) {
 
             if (nums[i] + nums[j] === target) {
                 return [i, j]
-                break;
             }
         }
     }
