@@ -12,26 +12,28 @@
 
 const findMaxAverage = (nums, k) => {
 
-    // O(n)
-    let max = 0;
+    // Time complexity:O(n)
+    // Space Complexity: O(1)
+
+    let start = 0;
     let sum = 0;
+    let maxSum = -Number.MAX_SAFE_INTEGER;
 
-    for (let i = 0; i < k; i++) {
+    for (let i = 0; i < nums.length; i++) {
+
         sum += nums[i];
-        max = sum;
+        if (i - start + 1 === k) {
+            maxSum = Math.max(maxSum, sum);
+            sum -= nums[start]
+            start++;
+        }
     }
+    let result = maxSum / k;
 
-    for (let i = k; i < nums.length; i++) {
-        sum += nums[i] - nums[i - k]
-
-        Math.max(max, sum);
-    }
-
-    const result = max / k;
-
-    return result.toFixed(5)
+    return result.toFixed(5);
 }
 
 
 console.log(findMaxAverage([1, 12, -5, -6, 50, 3], 4)); //Expected Ouput: 12.75000
+console.log(findMaxAverage([-1], 1)); //Expected Ouput: -1.0000
 
