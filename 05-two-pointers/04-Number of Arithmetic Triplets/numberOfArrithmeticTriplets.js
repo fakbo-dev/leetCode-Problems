@@ -16,6 +16,25 @@
 
 const arithmeticTriplets = (nums, diff) => {
 
+    const numsMap = new Map();
+    let triplet = 0;
+    const n = nums.length;
+    let i = 0;
+
+    while (i < n) {
+        numsMap.set(nums[i], true);
+        i++
+    }
+
+    for (let i = 0; i < n; i++) {
+        if (numsMap.has(nums[i] - diff) && numsMap.has(nums[i] + diff)) {
+
+            triplet++;
+        }
+    }
+
+    return triplet;
+
 }
 
 
