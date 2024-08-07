@@ -2,7 +2,7 @@
 
 // Steps
 
-// 1. dado un array de numeros binarios y un numero entero "k", retornar el numero maximo de unos consecutivos en el array si tu Puedes voltear como máximo k 0.
+// 1. dado un array de numeros binarios y un numero entero "k", retornar el numero maximo de unos consecutivos en el array si tu Puedes voltear como máximo k 0s.
 const longestOnes = function (nums, k) {
 
 
