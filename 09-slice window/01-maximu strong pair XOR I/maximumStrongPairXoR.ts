@@ -14,22 +14,26 @@
 
 // 2. |x - y| <= min(x, y)
 
-// 3. necesito seleccionar dos enteros de "nums" tal que ellos formen a par fuerte y su XOR bit a bit sea el máximo entre todos los pares fuertes en la matriz.
+// 3. debe seleccionar dos enteros de "nums" tal que ellos formen a par fuerte y su XOR bit a bit sea el máximo entre todos los pares fuertes en la matriz.
 
 // 4. retorna el valor maximo valor XOR de todas los pares fuertes en el array "nums".
 
 // 5. ypuedes tomar el mismo entero dos veces para formar un par fuerte
 
 const maximumStrongPairXoR = (nums: number[]) => {
-    let xor = 0;
-
-    const map: Map<number, number> = new Map();
+    let XoR: number = 0;
 
     for (let i = 0; i < nums.length; i++) {
-        map.set(nums[i], i);
+        let temp = 0;
+        for (let j = 0; j < nums.length; j++) {
+            if (Math.abs(nums[i] - nums[j]) <= Math.min(nums[i], nums[j])) {
+                temp = nums[i] ^ nums[j];
+
+                XoR = Math.max(XoR, temp);
+            }
+        }
     }
-
-
+    return XoR
 };
 
 
