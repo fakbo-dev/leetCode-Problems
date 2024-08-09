@@ -20,22 +20,44 @@
 
 // 5. ypuedes tomar el mismo entero dos veces para formar un par fuerte
 
-const maximumStrongPairXoR = (nums: number[]) => {
+const maximumStrongPairXor = (nums: number[]): number => {
+    nums.sort((a, b) => a - b); // Sort the array in ascending order
+
     let XoR: number = 0;
+    let windowStart: number = 0;
 
-    for (let i = 0; i < nums.length; i++) {
-        let temp = 0;
-        for (let j = 0; j < nums.length; j++) {
-            if (Math.abs(nums[i] - nums[j]) <= Math.min(nums[i], nums[j])) {
-                temp = nums[i] ^ nums[j];
+    for (let windowEnd = 0; windowEnd < nums.length; windowEnd++) {
+        while (nums[windowEnd] - nums[windowStart] > nums[windowStart]) {
+            windowStart++;
+        }
 
-                XoR = Math.max(XoR, temp);
-            }
+        for (let i = windowStart; i < windowEnd; i++) {
+            XoR = Math.max(XoR, nums[i] ^ nums[windowEnd]);
         }
     }
-    return XoR
+
+    return XoR;
 };
 
 
+maximumStrongPairXor([1, 2, 3, 4, 5]);
 
-maximumStrongPairXoR([1, 2, 3, 4, 5]);
+
+
+// ? Brute Force
+
+// const maximumStrongPairXor = (nums: number[]) => {
+//     let XoR: number = 0;
+
+//     for (let i = 0; i < nums.length; i++) {
+//         let temp = 0;
+//         for (let j = 0; j < nums.length; j++) {
+//             if (Math.abs(nums[i] - nums[j]) <= Math.min(nums[i], nums[j])) {
+//                 temp = nums[i] ^ nums[j];
+
+//                 XoR = Math.max(XoR, temp);
+//             }
+//         }
+//     }
+//     return XoR
+// };
