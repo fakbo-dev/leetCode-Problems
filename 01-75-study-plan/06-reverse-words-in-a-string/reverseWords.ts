@@ -19,7 +19,6 @@ function reverseWords(s: string) {
         result += arrString[i] + (i !== 0 ? " " : "");
     }
 
-    console.log(result);
     return result;
 };
 
